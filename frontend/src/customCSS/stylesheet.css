@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+    h1, h2, h3, h4, h5 {
+    font-family: 'Josefin Sans', cursive;
+  }
+
+/* @import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+h1 {
+    font-family: 'Iceland', cursive;
+} */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+h1 {
+    font-family: 'Nosifer', cursive;
+} */
+
+.love {
+    color: red
+}
+.title {
+    color: maroon
+}
