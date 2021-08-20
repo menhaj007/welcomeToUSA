@@ -1,10 +1,33 @@
 import React from 'react'
 
-export default function CommentDetails({readers_comment, image}) {
+export default function CommentDetails({id,readers_comment, image}) {
+
+    function handleDelete(){
+        console.log("I was clicked")
+        fetch(`http://localhost:3000/comments/${id}`,{
+            method: 'DELETE',
+            body: null
+        });
+    }
+
     return (
-        <div className="container">
-            <p>{readers_comment}</p>
-            {/* {image && <img src={image} alt="images for test"/>} */}
+        <div className="container border-2 my-3">
+            <div className="border ">
+
+                <div className="row">
+                    <div className="">
+                        <p className="">{readers_comment}</p>
+                    </div>
+                    <div className="">
+                        {image && <img src={image} style={{width: "150px", border: "5px"}} alt="images for test"/>} 
+                    </div>
+                </div>
+            <div>
+                <button type="button" className="btn btn-danger mt-2" onClick={handleDelete}>Delete</button>
+                {/* <button type="button" className="btn btn-warning mx-3" onClick={e => console.log("click me")}>edit</button> */}
+            </div>
+            </div>
+            
         </div>
     )
 }

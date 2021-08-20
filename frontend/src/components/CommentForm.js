@@ -8,32 +8,8 @@ export default function CommentForm() {
 
     const {id} = useParams();
 
-    let history = useHistory();
+    const history = useHistory();
 
-    // async function handleSubmit(e){
-    //     e.preventDefault()
-    //     const comment = {
-    //         readers_comment: readers_comment,
-    //         post_id: id
-    //     }
-    //     // debugger
-    //     const res = await fetch(`http://localhost:3000/comments`,{
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({comment})
-    //     });
-    //     const userData = await res.json();
-    //     if(res.ok){
-    //         setReadersComment("")
-    //         history.push(`/posts/${id}`)
-    //     } else {
-    //         // setErrors(userData.message)
-    //     }
-
-    // };
-    
 
     function handleSubmit(e){
         e.preventDefault()
@@ -48,9 +24,11 @@ export default function CommentForm() {
             method: "POST",
             body: data
         })
-        // history.push("/posts/"+ id)   
+        //history to re-render the same page with different name.
+        history.push("/new-comments/"+id)
+        console.log(history)   
         setReadersComment("")
-        setImage({})
+        setImage("")
 
     };
 
@@ -85,3 +63,30 @@ export default function CommentForm() {
         </div>
     )
 }
+
+
+
+    // async function handleSubmit(e){
+    //     e.preventDefault()
+    //     const comment = {
+    //         readers_comment: readers_comment,
+    //         post_id: id
+    //     }
+    //     // debugger
+    //     const res = await fetch(`http://localhost:3000/comments`,{
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({comment})
+    //     });
+    //     const userData = await res.json();
+    //     if(res.ok){
+    //         setReadersComment("")
+    //         history.push(`/posts/${id}`)
+    //     } else {
+    //         // setErrors(userData.message)
+    //     }
+
+    // };
+    

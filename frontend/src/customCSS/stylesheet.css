@@ -1,18 +1,33 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #F8F8F8
+}
+
+
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
-    h1, h2, h3, h4, h5 {
+  .h1c {
     font-family: 'Josefin Sans', cursive;
   }
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+  h2c {
+    font-family: 'Lobster', cursive;
+  }
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
 
-/* @import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
-
-h1 {
+h3c {
     font-family: 'Iceland', cursive;
-} */
+}
 
 /* @import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
-h1 {
+h3 {
     font-family: 'Nosifer', cursive;
 } */
+
+/* h1 h2 h3 h4 {
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas, "Liberation Mono","Courier New", monospace;
+} */
+
 
 .love {
     color: red
@@ -20,3 +35,83 @@ h1 {
 .title {
     color: maroon
 }
+
+.link {
+  color: rgb(45, 25, 82);
+  text-decoration: none;
+  /* font-family: 'Iceland', cursive; */
+  font-size: 1.2rem;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New", monospace;
+  
+}
+.link:hover {
+   color: rgb(196, 1, 186);
+   text-decoration: underline
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #eceff1;
+  }
+  
+  .navbar__link {
+    margin: 1em;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: .3em;
+    text-indent: .3em;
+    color: #181818;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .navbar__link:hover {
+    transform: translateY(-2px);
+  }
+  
+  .navbar__link--active {
+    border-bottom: 3px solid #29b6f6;
+    transition: border-bottom .5s ease-in-out;
+  }
+
+  .card-container {
+  
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    background-color: rgba(255, 255, 255, .15);
+    
+    backdrop-filter: blur(5px);
+  }
+  
+
+  .navColor {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    /* font-family: 'Iceland', cursive; */
+    font-size: 1.2rem;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New", monospace;
+    background-color: '#185869'
+    
+  }
+  .navColor:hover {
+     color: rgb(196, 1, 186);
+     /* text-decoration: underline */
+  }
+
+  .cLink {
+    color: rgb(41, 3, 3);
+    text-decoration: none;
+    /* font-family: 'Iceland', cursive; */
+    font-size: 1rem;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New", monospace;
+    background-color: '#185869'
+    
+  }
+  .cLink:hover {
+     color: rgb(11, 129, 207);
+     /* text-decoration: underline */
+  }

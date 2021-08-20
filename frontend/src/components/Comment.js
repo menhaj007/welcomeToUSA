@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CommentForm from './CommentForm';
 import CommentDetails from './CommentDetails';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function Comment() {
     let {id} = useParams();
     const [post, setPost] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
         async function fetchPost() {
@@ -16,15 +18,18 @@ export default function Comment() {
             setPost(postData)
         }
         fetchPost()
-        console.log("Post data",post)
+        console.log("Post data",post.comments)
+
     }, [id])
 
     return (
         <div className="container">
-            <h1>{post.title} </h1>
-
-            {/* {console.log(post.comments[0].image)} */}
-            {/* <img src={post[0].image}/> */}
+            <div className="jumbotron jumbotron-fluid">
+                <div className="">
+                    <h1 className="">{post.title}</h1>
+                    {/* <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
+                </div>
+            </div>
             {post.comments && post.comments.map(comment => <CommentDetails key={comment.id} {...comment} />)}
 
             <CommentForm />

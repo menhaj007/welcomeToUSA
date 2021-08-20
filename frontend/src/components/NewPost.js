@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 export default function NewPost() {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState({});
+    
 
     const history = useHistory();
 
@@ -21,9 +22,15 @@ export default function NewPost() {
             method: "POST",
             body: data
         })
+        .then(r => r.text())
+        .then(data => console.log(data))
+        
+        // debugger
         setTitle("")
-        setImage({})
-        history.push("/")
+        setImage("")
+        e.target.reset();
+        history.push("/posts")
+
 
         
         
