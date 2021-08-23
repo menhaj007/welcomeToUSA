@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 
-export default function CommentForm() {
+export default function CommentForm({updateStateStatus}) {
     const [readers_comment, setReadersComment] = useState("")
     const [image, setImage] = useState({});
 
@@ -12,7 +12,7 @@ export default function CommentForm() {
 
 
     function handleSubmit(e){
-        e.preventDefault()
+        // e.preventDefault()
         const data = new FormData()
         data.append("readers_comment", readers_comment)
         data.append("image", image)
@@ -25,8 +25,9 @@ export default function CommentForm() {
             body: data
         })
         //history to re-render the same page with different name.
-        history.push("/new-comments/"+id)
-        console.log(history)   
+        history.push("/posts/"+id)
+        // console.log(history)
+        updateStateStatus()   
         setReadersComment("")
         setImage("")
 

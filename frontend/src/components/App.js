@@ -6,6 +6,8 @@ import PDFLinks from './PDFLinks';
 import SocialServices from './SocialServices';
 import Healthcare from './Healthcare';
 import TransportationGuide from './TransportationGuide';
+import UpdatePost from './UpdatePost'
+import Dari from './Dari';
 function App() {
   return (
     <Router>
@@ -15,11 +17,13 @@ function App() {
           <Route exact path="/posts/:id" component={Comment} />
           {/* /new-comments/"+id */}
           <Route exact path="/new-comments/:id" component={Comment} />
+          <Route exact path="/update-post/:id" component={UpdatePost} />
           <Route exact path="/posts" component={PostContainer}/>
           <Route exact path="/esol" component={PDFLinks}/>
           <Route exact path="/social-services" component={SocialServices}/>
           <Route exact path="/healthcare" component={Healthcare}/>
           <Route exact path="/transportation-guide" component={TransportationGuide}/>
+          <Route exact path="/dari" component={Dari}/>
           
           <Route exact path="/" component={PostContainer}/>
         </Switch>

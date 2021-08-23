@@ -9,12 +9,9 @@ class UsersController < ApplicationController
         end
     end
     def index
-        render :json => User.all
-        
+        users = User.all
+        render json: users, include: [:post]
     end
-
-    
-
 
     
     def destroy

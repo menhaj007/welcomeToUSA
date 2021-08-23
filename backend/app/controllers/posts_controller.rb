@@ -1,13 +1,12 @@
 class PostsController < ApplicationController
-    before_action :check_configuration
+    # before_action :check_configuration
 
-    def check_configuration
-        render 'configuration_missing' if Cloudinary.config.api_key.blank?
-    end
+    # def check_configuration
+    #     render 'configuration_missing' if Cloudinary.config.api_key.blank?
+    # end
 
     def create
         new_post = Post.create(post_params)
-        new_post.public_id = new_post.image.key
         # byebug
         if new_post.valid?
             render json: new_post, status: :created
@@ -16,27 +15,37 @@ class PostsController < ApplicationController
         end
     end
 
-    def create_without_attachment
-        new_post = Post.create(post_without_attachment_params)
-        
+    # def update
+    #     post = Post.find_by(id: params[:id])
+    #     post.update(post_params)
+    #     render josn: post
+
+    #     # byebug
+    # end
+    def update
+        post = Post.find_by(id: params[:id])
         # byebug
-        if new_post.valid?
-            render json: new_post, status: :created
+
+        post.assign_attributes(update_params)
+        if post.valid?
+            post.save
+            render json: post, status: :created
         else
-            render json: {errors: new_post.errors.full_messages}, status: 422
+            render json: {errors: post.errors.full_messages}, status: 422
         end
     end
 
+
+    def index
+        render json: Post.all
+    end
 
     # def index
-    #     render json: Post.all
-    # end
-    def index
-        post = Post.all.with_attached_image
-        # byebug
+    #     post = Post.all.with_attached_image
+    #     # byebug
     
-        render json: post.map { |p| p.as_json.merge({ image: url_for(p.image) }) }
-    end
+    #     render json: post.map { |p| p.as_json.merge({ image: url_for(p.image) }) }
+    # end
 
     def show
         post = Post.find_by(id: params[:id])
@@ -51,18 +60,17 @@ class PostsController < ApplicationController
     def destroy
         # post = Post.find_by(id: params[:id])
         post = Post.find(params[:id])
-        public_id = post.image.key
         post.destroy
-        render json: Cloudinary::Uploader.destroy(public_id)
     end
 
 
     private
     def post_params
-        # params.require(:post).permit(:title, :user_id, :image)
-        params.permit(:title, :user_id, :image, :image_url, :public_id)
+        params.require(:post).permit(:title, :user_id)
+        # params.permit(:title, :user_id, :image, :image_url, :public_id)
     end
-    def post_without_attachment_params
-        params.permit(:title, :user_id)
+    def update_params
+        params.require(:post).permit(:title, :id)
     end
+    
 end

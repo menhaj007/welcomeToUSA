@@ -23,16 +23,19 @@ export default function NavBar() {
               <a className="nav-link" href="/posts"><span>Posts</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="/social-services"><span >Social Service</span></a>
+              <a className="nav-link " href="/social-services"><span >Social-Services</span></a>
             </li>
             <li className="nav-item">
               <a className="nav-link " href="/healthcare"><span >Healthcare</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="/esol"><span >English Course</span></a>
+              <a className="nav-link " href="/esol"><span >English-Courses</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="/transportation-guide"><span >Transportation Guide</span></a>
+              <a className="nav-link " href="/transportation-guide"><span >Transportation</span></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link " href="/dari"><span >دری/فارسی</span></a>
             </li>
           
           </ul>

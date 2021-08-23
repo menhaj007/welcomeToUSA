@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 export default function Comment() {
     let {id} = useParams();
     const [post, setPost] = useState({});
+    const [isUpdated, setIsUpdated] = useState(false)
     const history = useHistory();
 
     useEffect(() => {
@@ -22,6 +23,10 @@ export default function Comment() {
 
     }, [id])
 
+    const updateStateStatus = () => {
+        setIsUpdated(!isUpdated)
+    }
+
     return (
         <div className="container">
             <div className="jumbotron jumbotron-fluid">
@@ -32,7 +37,7 @@ export default function Comment() {
             </div>
             {post.comments && post.comments.map(comment => <CommentDetails key={comment.id} {...comment} />)}
 
-            <CommentForm />
+            <CommentForm updateStateStatus={updateStateStatus}/>
         </div>
     )
 }
