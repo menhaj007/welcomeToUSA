@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Card, Body, Row, Button, Col} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import NewPost from './NewPost'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 
 export default function PostContainer() {
@@ -10,17 +10,18 @@ export default function PostContainer() {
     const [isUpdate, setIsUpdate] = useState(false)
     
     const history = useHistory();
+    const location = useLocation()
 
     useEffect(() => {
         async function fetchPostData() {
             const res = await fetch("http://127.0.0.1:3000/posts")
             const postData = await res.json()
             setPosts(postData)
+            setIsUpdate(true)
             // console.log(postData)
         }
         fetchPostData()
-        console.log("Posted Data", posts)
-
+        // console.log("Posted Data", posts)
 
     }, [isUpdate])
 
@@ -30,7 +31,8 @@ export default function PostContainer() {
             method: 'DELETE',
             body: null
         });
-        return history.push("/")
+        history.push("/posts")
+        setIsUpdate(!isUpdate)
     }
 
     const changeState = () => {
@@ -57,19 +59,18 @@ export default function PostContainer() {
                 <Col className="" >
                 
                     { posts.map(post => <div className="mx-1" key={post.id} >
-                            <Card style={{ width: '80%', height: '8rem', backgroundColor: "#f7fbfc"}} className="card-container mb-2">
+                            <Card style={{ width: '80%', height: '', backgroundColor: "#f7fbfc"}} className="card-container mb-2">
                                 <Card.Title><Link to={`/posts/${post.id}`} className="d-flex mt-2 mx-2 align-self-center link"> {post.title}</Link></Card.Title>
-                                {/* <Card.Body className="align-self-center mt-2 card-container">
-                                    {post.image? <Card.Img src={post.image} style={{width: "200px"}} alt="test"/>: ""}
-                                </Card.Body> */}
-                                <Link to={`/posts/${post.id}`} className="btn mt-3 cLink"> Click here leave a comment</Link> 
 
                             </Card>
                             <div className="align-self-center my-2 mb-2 ">
-                                <Button type="button" id={post.id} className="btn btn-danger  mx-1" onClick={handleDelete}>Delete</Button>
-                                <Button type="button" className="btn btn-warning mx-1" onClick={e => console.log("click me")}>
-                                    <Link to={`/update-post/${post.id}`} className="link"> Edit </Link>
-                                    </Button>
+                                <Button type="button" id={post.id} className="btn btn-danger  mx-1" style={{color: "lightgray"}} onClick={e => handleDelete(e)}>Delete</Button>
+                                <Button type="button" className="btn btn-warning mx-1" >
+                                    <Link to={`/update-post/${post.id}`} className="link" style={{color: "maroon"}}> Edit </Link>
+                                </Button>
+                                {/* <Button type="button" className="btn btn-success mx-1" >
+                                    <Link to={`/posts/${post.id}`} className="pLink" >Click here to leave a comment</Link> 
+                                </Button> */}
                             </div>
 
                     </div>)

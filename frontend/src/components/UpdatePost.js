@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
-export default function UpdatePost() {
+export default function UpdatePost({changeState}) {
     const [title, setTitle] = useState("")
     let {id} = useParams();
     let history = useHistory();
@@ -38,6 +38,7 @@ export default function UpdatePost() {
             .then(response => response.json())
             .then(json => console.log(json))
             history.push("/posts")
+            
 
     
     }

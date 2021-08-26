@@ -112,6 +112,19 @@ h3 {
     
   }
   .cLink:hover {
+     color: rgb(5, 85, 138);
+     /* text-decoration: underline */
+  }
+  .pLink {
+    color: rgb(236, 228, 228);
+    text-decoration: none;
+    /* font-family: 'Iceland', cursive; */
+    font-size: 1rem;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New", monospace;
+    background-color: '#185869'
+    
+  }
+  .pLink:hover {
      color: rgb(11, 129, 207);
      /* text-decoration: underline */
   }

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useHistory } from "react-router-dom";
+
 
 export default function CommentDetails({id,readers_comment, image}) {
+    let history = useHistory();
 
     function handleDelete(){
         console.log("I was clicked")
@@ -8,6 +11,8 @@ export default function CommentDetails({id,readers_comment, image}) {
             method: 'DELETE',
             body: null
         });
+        
+        // history.push("/posts/:id")
     }
 
     return (

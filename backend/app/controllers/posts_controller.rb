@@ -59,7 +59,12 @@ class PostsController < ApplicationController
 
     def destroy
         # post = Post.find_by(id: params[:id])
-        post = Post.find(params[:id])
+        post = Post.find_by(id: params[:id])
+        if post.comments.length > 0
+            # byebug
+            post.comments.each { |item|  Cloudinary::Uploader.destroy(item.image.key)}
+        else
+        end
         post.destroy
     end
 

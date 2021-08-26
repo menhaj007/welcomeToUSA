@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+import { Dropdown, Form } from 'react-bootstrap';
 
 export default function NewPost({changeState}) {
     const [title, setTitle] = useState("");
@@ -56,6 +57,28 @@ export default function NewPost({changeState}) {
                             onChange={e => setImage(e.target.files[0])}
                             />
                         </div> */}
+                        {/* <Dropdown>
+                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                Choose type
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item >Question?</Dropdown.Item>
+                                <Dropdown.Item >Information</Dropdown.Item>
+                                <Dropdown.Item >Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown> */}
+                        <div className="mt-3">
+                            <Form.Group className="mb-3" controlId="question">
+                                <Form.Check type="checkbox" label="Question" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="information">
+                                <Form.Check type="checkbox" label="Information" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="tips">
+                                <Form.Check type="checkbox" label="Tips" />
+                            </Form.Group>
+                        </div>
 
                         <div className="form-group">
                             <input type="submit" className="btn btn-dark btn-md mt-3" id="submit" name="submit"
